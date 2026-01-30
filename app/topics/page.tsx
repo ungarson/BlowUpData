@@ -20,6 +20,19 @@ type Database = Record<string, Topic>;
 
 const topicsData: Database = data as any;
 
+// Format segments wrapped in asterisks as italic while preserving plain text
+function formatEmphasis(text: string): React.ReactNode {
+  // Split by *segment* while keeping the delimiters as separate items
+  const parts = text.split(/(\*[^*]+\*)/g);
+  return parts.map((part, idx) => {
+    if (part.startsWith("*") && part.endsWith("*") && part.length >= 2) {
+      const inner = part.slice(1, -1);
+      return <em key={idx}>{inner}</em>;
+    }
+    return <React.Fragment key={idx}>{part}</React.Fragment>;
+  });
+}
+
 // Lightweight video preview card using noembed to fetch title + thumbnail
 const VideoPreview: React.FC<{ url: string }> = ({ url }) => {
   const [title, setTitle] = useState<string | null>(null);
@@ -45,33 +58,40 @@ const VideoPreview: React.FC<{ url: string }> = ({ url }) => {
     };
   }, [url]);
 
-  // Fallback: plain link text if preview failed
+  // Compact horizontal card with 100x100 square thumbnail and text on the right
   if (failed) {
     return (
-      <a
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="truncate text-sm text-blue-600 hover:underline dark:text-blue-400"
-      >
-        {url}
+      <a href={url} target="_blank" rel="noopener noreferrer" className="block w-full">
+        <div className="flex w-full items-center gap-3 rounded-md border border-zinc-200 bg-white p-2 transition hover:shadow-sm dark:border-zinc-700 dark:bg-zinc-900">
+          <div className="flex h-[100px] w-[100px] flex-none items-center justify-center rounded bg-zinc-100 text-xs text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
+            No preview
+          </div>
+          <div className="min-w-0">
+            <div className="line-clamp-2 text-sm font-medium text-blue-600 underline-offset-2 hover:underline dark:text-blue-400">
+              {url}
+            </div>
+          </div>
+        </div>
       </a>
     );
   }
 
   return (
     <a href={url} target="_blank" rel="noopener noreferrer" className="block">
-      <div className="overflow-hidden rounded-md border border-zinc-200 bg-white shadow-sm transition hover:shadow-md dark:border-zinc-700 dark:bg-zinc-900">
+      <div className="flex items-center gap-3 rounded-md border border-zinc-200 bg-white p-2 transition hover:shadow-sm dark:border-zinc-700 dark:bg-zinc-900">
         {thumb ? (
-          <img src={thumb} alt={title ?? url} className="h-32 w-full object-cover" loading="lazy" />
+          <img src={thumb} alt={title ?? url} className="h-[100px] w-[100px] flex-none rounded object-cover" loading="lazy" />
         ) : (
-          <div className="flex h-32 w-full items-center justify-center bg-zinc-100 text-xs text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
+          <div className="flex h-[100px] w-[100px] flex-none items-center justify-center rounded bg-zinc-100 text-xs text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
             Loading preview…
           </div>
         )}
-        <div className="p-2">
+        <div className="min-w-0">
           <div className="line-clamp-2 text-sm font-medium text-zinc-900 dark:text-zinc-100">
             {title ?? url}
+          </div>
+          <div className="mt-1 text-xs text-blue-600 underline-offset-2 hover:underline dark:text-blue-400">
+            {(() => { try { return new URL(url).hostname; } catch { return url; } })()}
           </div>
         </div>
       </div>
@@ -87,23 +107,17 @@ export default function TopicsPage() {
       .map(([, value]) => value);
   }, []);
 
-  // Expanded state for top-level topics and subtypes (expanded by default)
+  // Expanded state defaults: only the first top-level topic open; all subtypes closed
   const defaultExpandedTopics = useMemo(() => {
     const map: Record<number, boolean> = {};
-    topics.forEach((_, idx) => {
-      map[idx] = true;
-    });
+    // Open only the first topic (index 0)
+    if (topics.length > 0) map[0] = true;
     return map;
   }, [topics]);
 
   const defaultExpandedSubtypes = useMemo(() => {
+    // Start with all subtypes collapsed by default
     const map: Record<string, boolean> = {};
-    topics.forEach((topic, tIdx) => {
-      const subs = topic.subtypes ?? [];
-      subs.forEach((_, sIdx) => {
-        map[`${tIdx}-${sIdx}`] = true;
-      });
-    });
     return map;
   }, [topics]);
 
@@ -141,9 +155,9 @@ export default function TopicsPage() {
                     onClick={() => toggleTopic(tIdx)}
                     className="flex w-full items-center justify-between gap-3 rounded-lg px-4 py-3 text-left hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-zinc-400 dark:hover:bg-zinc-800/60"
                   >
-                    <span className="text-base font-medium text-zinc-900 dark:text-zinc-100">
-                      {topic.type}
-                    </span>
+                    <strong className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+                      {formatEmphasis(topic.type)}
+                    </strong>
                     <span
                       className={`select-none text-zinc-500 transition-transform dark:text-zinc-400 ${
                         isOpen ? "rotate-90" : ""
@@ -173,7 +187,7 @@ export default function TopicsPage() {
                                     className="flex w-full items-center justify-between gap-3 rounded-md px-3 py-2 text-left hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-zinc-400 dark:hover:bg-zinc-800/60"
                                   >
                                     <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
-                                      {sub.type}
+                                      {formatEmphasis(sub.type)}
                                     </span>
                                     <span
                                       className={`select-none text-xs text-zinc-500 transition-transform dark:text-zinc-400 ${subOpen ? "rotate-90" : ""}`}
@@ -185,7 +199,7 @@ export default function TopicsPage() {
                                   {subOpen && (
                                     <div className="px-3 pb-2">
                                       {sub.examples && sub.examples.length > 0 ? (
-                                        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
+                                        <div className="grid grid-cols-1 gap-3">
                                           {sub.examples.map((url, i) => (
                                             <VideoPreview key={i} url={url} />
                                           ))}
