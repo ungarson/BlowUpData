@@ -70,6 +70,12 @@
         ]
       },
       {
+        "type": "What exactly is *something*",
+        "examples": [
+          "https://www.youtube.com/watch?v=lsycTcjJz0M"
+        ]
+      },
+      {
         "type": "It took me *some time* to realize *something*",
         "examples": [
           "https://www.youtube.com/watch?v=xz-ymFOhBAE",
