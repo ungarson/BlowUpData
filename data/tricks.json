@@ -1,0 +1,84 @@
+{
+  "0": {
+    "type": "Just lie",
+    "subtypes": [
+      {
+        "type": "Use a popular news topic to create a false story",
+        "examples": [
+          "Saw your name in the Epstein files: https://x.com/sammarelich/status/2021341379839000663",
+          "This guy probably lied. I can't verify if people actually told him that he was in the Epstein's island. Good usage of the popular topic. https://www.youtube.com/post/UgkxYGbBNKKjVczzAdw364_PRmDBBxwGEfKP"
+        ]
+      },
+      {
+        "type": "Lie using money. People love money.",
+        "examples": [
+          "«A wealthy woman paid 3.7 million to sit next to Turkish actor Burak for just 15 minutes» — she did not pay this money, lol: https://x.com/GPX_Press/status/2021300173154980060"
+        ]
+      },
+      {
+        "type": "Lie that you got into a trouble",
+        "examples": [
+          "Example: lie that you had a fight with someone and now you’re in a hospital. Works best if you combine it with going through the character development — your lies will be forgiven."
+        ]
+      },
+      {
+        "type": "Lie that you (or someone else) has been arrested",
+        "examples": [
+          "https://x.com/KantInEastt/status/2022550804490838500"
+        ]
+      }
+    ]
+  },
+  "1": {
+    "type": "Do something illegal",
+    "warning": "marketing results will outperform the costs (fines) if media posts about you. After getting attention from the media, publicly apologize. Do not do anything violent. ",
+    "examples": [
+      "Example: In Russia, YouTube is blocked, although some internet providers had  made it available for the users. It was clear that the government will reach the providers, and YouTube will be unavailable soon. The marketing results have likely covered the fines that they had to pay. Link: https://t.me/forbesglobalrus/6616"
+    ]
+  },
+  "2": {
+    "type": "Buy fake posts",
+    "examples": [
+      "Example: buy posts where people would tell you how your videos/product is great and has such small amount of views/sales: https://x.com/AlexeiScales/status/2018502733184078245 and https://x.com/kimjendu/status/2021769004545880421",
+      "Example: buy posts where people would tell you that you have disappeared (left the game): https://x.com/iyoushetwt/status/2022352749879529835"
+    ]
+  },
+  "3": {
+    "type": "Make a staged content",
+    "examples": [
+      "Make a staged video: https://x.com/gen_z4961/status/2018660769387401356"
+    ]
+  },
+  "5": {
+    "type": "Go through character development",
+    "subtypes": [
+      {
+        "type": "Example: be a bad person for some time, get engagement, then publicly ask for forgiveness. People will forgive you."
+      }
+    ]
+  },
+  "7": {
+    "type": "Appeal to men as a women",
+    "subtypes": [
+      {
+        "type": "Play on the vulnerable parts of men",
+        "examples": [
+          "https://x.com/evaedxn_/status/2021296029895954829",
+          "https://x.com/Vicky/status/2022032779832438872"
+        ]
+      }
+    ]
+  },
+  "8": {
+    "type": "Make a vague post",
+    "examples": [
+      "Example (it's worth checking the memes in the thread 😄): https://x.com/elsdawg/status/2022278524875264112"
+    ]
+  },
+  "9": {
+    "type": "Steal",
+    "examples": [
+      "Steal other people's posts (I saw this one from the few authors within a few days): https://x.com/haha_girrrl/status/2022316253038448927"
+    ]
+  }
+}

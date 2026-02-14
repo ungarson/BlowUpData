@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo, useState, useEffect } from "react";
-import data from "../../data/database.json";
+import data from "../../data/titles.json";
 
 type ExampleUrl = string;
 
@@ -15,7 +15,7 @@ type Topic = {
   subtypes?: Subtype[];
 };
 
-// database.json is an object with numeric-string keys mapping to Topic
+// titles.json is an object with numeric-string keys mapping to Topic
 type Database = Record<string, Topic>;
 
 const topicsData: Database = data as any;

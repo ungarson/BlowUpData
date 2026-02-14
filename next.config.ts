@@ -22,6 +22,20 @@ const nextConfig: NextConfig = {
         ],
         destination: "/titles/:path*",
       },
+      {
+        source: "/",
+        has: [
+          { type: "host", value: "tricks.blowup.digital" },
+        ],
+        destination: "/tricks",
+      },
+      {
+        source: "/:path*",
+        has: [
+          { type: "host", value: "tricks.blowup.digital" },
+        ],
+        destination: "/tricks/:path*",
+      },
     ];
   },
 };

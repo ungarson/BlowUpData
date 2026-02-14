@@ -26,7 +26,16 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Make changes to the database
+## About Blowup
 
-Open the data folder in this project, then proceed to the database.json. Hopefully, you know how the JSON works.
-After applying changes to the database.json, create a pull request on github.
+This repository contains the Blowup newsletter's data. It currently includes:
+- Titles (in data/titles.json) served at titles.blowup.digital
+- Marketing tricks (in data/tricks.json) served at tricks.blowup.digital
+
+## Make changes to the data
+
+Open the data folder in this project and edit the appropriate JSON file:
+- data/titles.json for YouTube title classifications
+- data/tricks.json for marketing tricks
+
+After applying changes, create a pull request on GitHub.
