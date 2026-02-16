@@ -137,7 +137,7 @@ export default function TopicsPage() {
             These examples are provided for educational purposes only, to help people recognize persuasive tactics and avoid being misled. Watch closely, you are being tricked every fucking day by sociopaths.
           </p>
           <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
-            Created by Daniil Orain, managed by the <a href={"https://github.com/ungarson/MamontMarketing"} className={"text-blue-300"} target={"_blank"}>community</a>.
+            Created by Daniil Orain, managed by the <a href={"https://github.com/ungarson/BlowUpData"} className={"text-blue-300"} target={"_blank"}>community</a>.
           </p>
         </header>
         {/* Scrollable content box */}
