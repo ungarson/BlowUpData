@@ -16,15 +16,28 @@
         ]
       },
       {
-        "type": "Lie that you got into a trouble",
+        "type": "Lie that you got into a trouble / crazy situation",
         "examples": [
-          "Example: lie that you had a fight with someone and now you’re in a hospital. Works best if you combine it with going through the character development — your lies will be forgiven."
+          "Example: lie that you had a fight with someone and now you’re in a hospital. Works best if you combine it with going through the character development — your lies will be forgiven.",
+          "https://x.com/Kick_Champ/status/2027869190128914756"
         ]
       },
       {
         "type": "Lie that you (or someone else) has been arrested",
         "examples": [
           "https://x.com/KantInEastt/status/2022550804490838500"
+        ]
+      },
+      {
+        "type": "Say everyone that you are going viral, even though you're not",
+        "examples": [
+          "https://x.com/DefiantLs/status/2027378182979281397"
+        ]
+      },
+      {
+        "type": "Lie postironically",
+        "examples": [
+          "https://x.com/alessio_joseph/status/2030023944137552159 "
         ]
       }
     ]
@@ -85,6 +98,12 @@
     "type": "Fail publicly",
     "examples": [
       "https://youtube.com/shorts/6WKDkSTbmRY?si=9TrjsokZR0QOR8jo"
+    ]
+  },
+  "11": {
+    "type": "Sell to kids",
+    "examples": [
+      "https://www.youtube.com/post/UgkxWJXIzSElDITNcSKNSx1nATNkAV5Nh4gQ"
     ]
   }
 }
